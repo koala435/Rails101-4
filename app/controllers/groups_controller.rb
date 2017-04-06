@@ -23,11 +23,19 @@ class GroupsController < ApplicationController
     @group = Group.update(group_params)
 
     redirect_to groups_path, notice: "Updata Success"
-  end 
+  end
 
   def edit
     @group = Group.find(params[:id])
   end
+
+  def destroy
+    @group = Group.find(params[:id])
+    @group.destroy
+    flash[:alert] = "Group deleted"
+
+    redirect_to groups_path
+  end 
 
   private
 
