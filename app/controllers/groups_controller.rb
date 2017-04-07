@@ -22,9 +22,11 @@ class GroupsController < ApplicationController
 
   def update
     @group = Group.find(params[:id])
-    @group = Group.update(group_params)
-
+  if @group = Group.update(group_params)
     redirect_to groups_path, notice: "Updata Success"
+  else
+    render :edit
+  end 
   end
 
   def edit
